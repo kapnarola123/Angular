@@ -18,21 +18,10 @@
         "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
-            "assets/css/bootstrap.css",
-            "assets/font-awesome/css/font-awesome.css",
-            "assets/css/zabuto_calendar.css",
-            "assets/css/style.css",
-            "assets/css/style-responsive.css"
+
         ],
         "scripts": [
-            "assets/js/jquery.js",
-            "assets/js/bootstrap.min.js",
-            "assets/js/jquery-ui-1.9.2.custom.min.js",
-            "assets/js/jquery.ui.touch-punch.min.js",
-            "assets/js/jquery.dcjqaccordion.2.7.js",
-            "assets/js/jquery.scrollTo.min.js",
-            "assets/js/jquery.nicescroll.js",
-            "assets/js/common-scripts.js"
+
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
