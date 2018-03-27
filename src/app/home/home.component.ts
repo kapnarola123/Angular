@@ -8,6 +8,7 @@ import {
   query,
   stagger
 } from "@angular/animations";
+import { DataService } from "../data.service";
 
 @Component({
   selector: "app-home",
@@ -24,7 +25,11 @@ import {
               ".6s ease-in",
               keyframes([
                 style({ opacity: 0, transform: "translateY(-75%)", offset: 0 }),
-                style({ opacity: 0.5, transform: "translateY(35px)", offset: .3}),
+                style({
+                  opacity: 0.5,
+                  transform: "translateY(35px)",
+                  offset: 0.3
+                }),
                 style({ opacity: 1, transform: "translateY(0)", offset: 1 })
               ])
             )
@@ -38,7 +43,11 @@ import {
               ".6s ease-in",
               keyframes([
                 style({ opacity: 1, transform: "translateY(0)", offset: 0 }),
-                style({ opacity: .5, transform: "translateY(35px)", offset: .3 }),
+                style({
+                  opacity: 0.5,
+                  transform: "translateY(35px)",
+                  offset: 0.3
+                }),
                 style({ opacity: 0, transform: "translateY(-75%)", offset: 1 })
               ])
             )
@@ -52,22 +61,26 @@ import {
 export class HomeComponent implements OnInit {
   itemcount: number;
   btntext: string = "add an item";
-  goaltext: string = "demo";
-  goals = ["Great India", "Great Indians", "Great Indian culture"];
+  goaltext: string = "My first life goal";
+  goals = [];
 
-  constructor() {}
+  constructor(private _data: DataService) {}
 
   ngOnInit() {
     this.itemcount = this.goals.length;
+    this._data.goal.subscribe(res => this.goals = res);
+    this._data.changegoal(this.goals);
   }
 
   additem() {
     this.goals.push(this.goaltext);
     this.goaltext = "";
     this.itemcount = this.goals.length;
+    this._data.changegoal(this.goals);
   }
 
   removeitem(i) {
     this.goals.splice(i, 1);
+    this._data.changegoal(this.goals);
   }
 }
