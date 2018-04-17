@@ -15,8 +15,9 @@ export class ProductService {
  
     // Get list of products from remote server.
     readProducts(): Observable<Product[]>{
+        
         return this._http
-            .get("http://localhost/Angular/api/api.php")
+            .get("http://localhost/api/api.php")
             .map(res => res.json());
     }
  
