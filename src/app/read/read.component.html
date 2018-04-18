@@ -14,35 +14,19 @@
         <table class='table table-hover table-responsive table-bordered'>
 
             <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Description</th>
+                <th>Id</th>
+                <th>First name</th>
+                <th>Last name</th>
                 <th>Category</th>
                 <th>Actions</th>
             </tr>
-
-            <!-- Use *ngFor directive to loop throught our list of products. -->
-            <tr *ngFor="let product of products">
-                <td>{{product.name}}</td>
-                <td>{{product.price}}</td>
-                <td>{{product.description}}</td>
-                <td>{{product.category_name}}</td>
-                <td>
-                    <!-- read one product button -->
-                    <a (click)="readOneProduct(product.id)" class='btn btn-primary m-r-5px'>
-                        <span class='glyphicon glyphicon-eye-open'></span> Read
-                    </a>
-
-                    <!-- edit product button -->
-                    <a (click)="updateProduct(product.id)" class='btn btn-info m-r-5px'>
-                        <span class='glyphicon glyphicon-edit'></span> Edit
-                    </a>
-
-                    <!-- delete product button -->
-                    <a (click)="deleteProduct(product.id)" class='btn btn-danger m-r-5px'>
-                        <span class='glyphicon glyphicon-remove'></span> Delete
-                    </a>
-                </td>
+            {{Repdata.names}}
+            <tr *ngFor="let kk of Repdata; let ind = index">
+                <td>{{kk.id}}</td>
+                <td>{{kk.first_name}}</td>
+                <td>{{kk.last_name}}</td>
+                <td><a (click)="edit(kk.id)" style="color:blueviolet">Edit</a></td>
+                <td><a (click)="delete(kk.id)" style="color:blueviolet">Delete</a> </td>
             </tr>
         </table>
     </div>

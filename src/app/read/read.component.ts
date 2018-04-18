@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 // import { ProductService } from "../product.service";
 import { CatService } from "../cat.service";
-import { Observable } from "rxjs/Observable";
+// import { Observable } from "rxjs/Observable";
+import {Observable} from 'rxjs/Rx';
 import { Product } from "../product";
 
 @Component({
@@ -13,6 +14,8 @@ import { Product } from "../product";
 export class ReadComponent implements OnInit {
   // store list of products
   products: Product[];
+  public cats;
+  public Repdata;
 
   // initialize productService to retrieve list products in the ngOnInit()
   constructor(private catservice: CatService) {}
@@ -25,8 +28,16 @@ export class ReadComponent implements OnInit {
 
   // Read products from API.
   ngOnInit() {
-    this.catservice
-      .getAllCats()
-      .subscribe(products => (this.products = products["cats"]));
+	this.catservice.getFoods().subscribe(names =>  this.Repdata = names);
+  }
+  getFoods() {
+	this.catservice.getFoods().subscribe(
+	  // the first argument is a function which runs on success
+	  data => { this.cats = data},
+	  // the second argument is a function which runs on error
+	  err => console.error(err),
+	  // the third argument is a function which runs on completion
+	  () => console.log('done loading foods')
+	);
   }
 }

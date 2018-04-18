@@ -1,15 +1,18 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject } from "@angular/core/testing";
 
-import { CatService } from './cat.service';
+import { CatService } from "./cat.service";
 
-describe('CatService', () => {
+describe("CatService", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [CatService]
     });
   });
 
-  it('should be created', inject([CatService], (service: CatService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    "should be created",
+    inject([CatService], (service: CatService) => {
+      expect(service).toBeTruthy();
+    })
+  );
 });
