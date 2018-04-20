@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Observable } from'rxjs/Observable';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/Observable";
 // import { HttpClient } from'@angular/common/http';
-import {Http,Response, Headers, RequestOptions } from '@angular/http';   
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 
-import 'rxjs/add/operator/map';  
-import 'rxjs/add/operator/do';  
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/do";
 
 export interface Cat {
   name: string;
@@ -12,7 +12,6 @@ export interface Cat {
 
 @Injectable()
 export class CatService {
-
   public name;
   constructor(private http: Http) {}
 
@@ -21,8 +20,16 @@ export class CatService {
   //   return this.http.get('/api/food');
   // }
   getFoods() {
-    return this.http.get('http://localhost:9999/api/cats').map((response: Response) =>response.json());
-  } 
+    return this.http
+      .get("http://localhost:9999/api/cats")
+      .map((response: Response) => response.json());
+  }
+
+  getsinglecategory(id) {
+    return this.http
+      .get("http://localhost:9999/api/cat/"+id)
+      .map((response: Response) => response.json());
+  }
 
   // getCat(name: string): Observable<Cat> {
   //   return this.http.get<Cat>('http://localhost:8000/api/cats/' + name);
@@ -37,6 +44,6 @@ export class CatService {
   // }
 
   deleteCat(name: string) {
-    return this.http.delete('http://localhost:8000/api/cats/' + name);
+    return this.http.delete("http://localhost:8000/api/cats/" + name);
   }
 }
