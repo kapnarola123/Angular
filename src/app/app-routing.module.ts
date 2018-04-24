@@ -4,6 +4,7 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { CreateComponent } from './create/create.component';
 import { ReadComponent } from './read/read.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
     {
@@ -25,6 +26,10 @@ const routes: Routes = [
     {
         path:'read',
         component: ReadComponent
+    },
+    {
+        path:'edit/:id',
+        component: EditComponent
     }
 ];
 

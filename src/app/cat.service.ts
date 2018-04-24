@@ -27,7 +27,7 @@ export class CatService {
 
   getsinglecategory(id) {
     return this.http
-      .get("http://localhost:9999/api/cat/"+id)
+      .get("http://localhost:9999/api/cat/" + id)
       .map((response: Response) => response.json());
   }
 
@@ -45,5 +45,18 @@ export class CatService {
 
   deleteCat(name: string) {
     return this.http.delete("http://localhost:8000/api/cats/" + name);
+  }
+
+  updateCoin(name, price, id) {
+    const uri = 'http://localhost:8000/api/cats/' + id;
+
+    const obj = {
+      name: name,
+      price: price
+    };
+    this
+      .http
+      .post(uri, obj)
+      .subscribe(res => console.log('Done'));
   }
 }

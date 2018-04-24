@@ -24,7 +24,7 @@
                 <td>{{kk.id}}</td>
                 <td>{{kk.first_name}}</td>
                 <td>{{kk.last_name}}</td>
-                <td><a (click)="edit(kk.id)" style="color:blueviolet">Edit</a></td>
+                <td><a routerLink="/edit/{{kk.id}}" style="color:blueviolet">Edit</a></td>
                 <td><a (click)="delete(kk.id)" style="color:blueviolet">Delete</a> </td>
             </tr>
         </table>

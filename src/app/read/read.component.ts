@@ -1,9 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-// import { ProductService } from "../product.service";
 import { CatService } from "../cat.service";
-// import { Observable } from "rxjs/Observable";
-import { Observable } from "rxjs/Rx";
-import { Product } from "../product";
+import { Observable } from "rxjs/Rx"
 
 @Component({
   selector: "app-read-products",
@@ -12,8 +9,8 @@ import { Product } from "../product";
   providers: [CatService]
 })
 export class ReadComponent implements OnInit {
+  
   // store list of products
-  products: Product[];
   public cats;
   public Repdata;
 
