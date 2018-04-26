@@ -11,39 +11,36 @@ import { Observable } from "rxjs/Rx";
   providers: [CatService]
 })
 export class EditComponent implements OnInit {
-  coin: any;
-  // 	angForm: FormGroup;
-  // 	title = 'Edit Coin';
+  lastname: string;
+  firstname: string;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: CatService
-  ) {
-    // 	  this.createForm();
-  }
+  ) {}
 
-  // 	createForm() {
-  // 	  this.angForm = this.fb.group({
-  // 		name: ['', Validators.required ],
-  // 		price: ['', Validators.required ]
-  // 	 });
-  // 	}
-
-  updateCoin(firstname, lastname) {
-	  console.log(firstname, lastname);
-    // this.route.params.subscribe(params => {
-    //   this.service.updateCoin(firstnameame, lastname, params["id"]);
-    //   this.router.navigate(["index"]);
-    // });
-  }
-
+  /**
+   * ngOnInit()
+   * @uses get the records from the api based on the id of users
+   */
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.coin = this.service
-        .getsinglecategory(params["id"])
-        .subscribe(res => {
-          this.coin = res[0];
-        });
+      this.service.get_user(params["id"]).subscribe(res => {
+        this.lastname = res[0]["last_name"];
+        this.firstname = res[0]["first_name"];
+      });
     });
   }
+
+  /**
+   * update_user()
+   * @uses update the user on click of the submit button
+   */
+  update_user() {
+    this.route.params.subscribe(params => {
+      this.service.update_user(this.firstname, this.lastname, params["id"]);
+      this.router.navigate(["read"]);
+    });
+  }  
 }

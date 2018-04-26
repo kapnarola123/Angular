@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { CatService } from "../cat.service";
-import { Observable } from "rxjs/Rx"
+import { Observable } from "rxjs/Rx";
 
 @Component({
   selector: "app-read-products",
@@ -9,7 +9,6 @@ import { Observable } from "rxjs/Rx"
   providers: [CatService]
 })
 export class ReadComponent implements OnInit {
-  
   // store list of products
   public cats;
   public Repdata;
@@ -19,10 +18,10 @@ export class ReadComponent implements OnInit {
 
   // Read products from API.
   ngOnInit() {
-    this.catservice.getFoods().subscribe(names => (this.Repdata = names));
+    this.catservice.get_users().subscribe(names => (this.Repdata = names));
   }
 
   edit(id) {
-	this.catservice.getsinglecategory(id).subscribe(names => (this.Repdata = names));
+    this.catservice.get_user(id).subscribe(names => (this.Repdata = names));
   }
 }

@@ -37,17 +37,18 @@
         color: #fff;
     }
 </style>
-<h3>
-    Using CSS to style an HTML Form</h3>
-
-<div style="width:500px;">
-    <p>Please view all inserted items <a routerLink="/read" class="logout">View items</a></p>
+<div style="width:500px;margin-left: 250px;">
+    <h3>
+        * Manage Users
+    </h3>
+    <p>
+        Please all insered users
+        <a routerLink="/read" class="logout">View users</a></p>
     <form action="/action_page.php">
         <label for="fname">First Name</label>
-        <input type="text" id="fname" name="firstname" placeholder="Your name.." [(ngModel)]="goaltext">
+        <input type="text" id="fname" name="firstname" placeholder="Your name.." [(ngModel)]="firstname" required>
         <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
+        <input type="text" id="lname" name="lastname" placeholder="Your last name.." [(ngModel)]="lastname">
         <label for="country">Country</label>
         <select id="country" name="country">
             <option value="australia">Australia</option>
@@ -56,4 +57,4 @@
           </select>
         <input type="submit" value="Submit" (click)="additem()">
     </form>
-</div>;
+</div>

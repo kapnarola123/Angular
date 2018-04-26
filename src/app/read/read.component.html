@@ -1,18 +1,13 @@
-<br>
-<div class="row m-b-18px">
+<div class="row" style="padding:20px">
     <div class="col-md-12">
-        <!-- button to create new product -->
-        <a (click)="createProduct()" class='btn btn-primary pull-right'>
+        <a routerLink="/create" class='btn btn-primary pull-right'>
             <span class='glyphicon glyphicon-plus'></span> Create Product
         </a>
     </div>
-</div>
-<br>
-<div class="row">
+    <br><br><br>
     <div class="col-md-12">
         <!-- HTML table for our list of product records -->
         <table class='table table-hover table-responsive table-bordered'>
-
             <tr>
                 <th>Id</th>
                 <th>First name</th>

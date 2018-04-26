@@ -1,8 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
-// import { HttpClient } from'@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
-
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/do";
 
@@ -15,48 +13,62 @@ export class CatService {
   public name;
   constructor(private http: Http) {}
 
-  // getAllCats(): Observable<Cat[]> {
-  //   // return this.http.get<Cat[]>('http://localhost:8000/api/cats');
-  //   return this.http.get('/api/food');
-  // }
-  getFoods() {
+  /**
+   * get_users()
+   * @uses Get the all users
+   */
+  get_users() {
     return this.http
       .get("http://localhost:9999/api/cats")
       .map((response: Response) => response.json());
   }
 
-  getsinglecategory(id) {
+  /**
+   * get_user()
+   * @uses Get the single user record
+   * @param id user id
+   */
+  get_user(id) {
     return this.http
       .get("http://localhost:9999/api/cat/" + id)
       .map((response: Response) => response.json());
   }
 
-  // getCat(name: string): Observable<Cat> {
-  //   return this.http.get<Cat>('http://localhost:8000/api/cats/' + name);
-  // }
-
-  // insertCat(cat: Cat): Observable<Cat> {
-  //   return this.http.post<Cat>('http://localhost:8000/api/cats/', cat);
-  // }
-
-  // updateCat(cat: Cat): Observable<void> {
-  //   return this.http.put<void>('http://localhost:8000/api/cats/' + cat.name, cat);
-  // }
-
   deleteCat(name: string) {
     return this.http.delete("http://localhost:8000/api/cats/" + name);
   }
 
-  updateCoin(name, price, id) {
-    const uri = 'http://localhost:8000/api/cats/' + id;
-
+  /**
+   * update_user()
+   * @uses this function is used to call the API for update records
+   * @param string firstname
+   * @param string lastname
+   * @param int id
+   */
+  update_user(firstname, lastname, id) {
+    const uri = "http://localhost:9999/api/update_cat/" + id;
     const obj = {
-      name: name,
-      price: price
+      firstname: firstname,
+      lastname: lastname,
+      id: id
     };
-    this
-      .http
-      .post(uri, obj)
-      .subscribe(res => console.log('Done'));
+    this.http.put(uri, obj).subscribe(res => console.log("Done"));
+  }
+
+  /**
+   * create_user()
+   * @uses this function is used to call the API for create records
+   * @param string firstname
+   * @param string lastname
+   * @param int id
+   */
+  create_user(firstname, lastname, id) {
+    const uri = "http://localhost:9999/api/update_cat/" + id;
+    const obj = {
+      firstname: firstname,
+      lastname: lastname,
+      id: id
+    };
+    this.http.put(uri, obj).subscribe(res => console.log("Done"));
   }
 }
