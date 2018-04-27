@@ -14,11 +14,13 @@ export class ReadComponent implements OnInit {
   public Repdata;
 
   // initialize productService to retrieve list products in the ngOnInit()
-  constructor(private catservice: CatService) {}
+  constructor(private catservice: CatService) {
+    this.catservice.get_users().subscribe(names => (this.Repdata = names));
+  }
 
   // Read products from API.
   ngOnInit() {
-    this.catservice.get_users().subscribe(names => (this.Repdata = names));
+    // this.catservice.get_users().subscribe(names => (this.Repdata = names));
   }
 
   edit(id) {

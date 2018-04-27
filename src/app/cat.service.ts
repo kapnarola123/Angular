@@ -62,12 +62,11 @@ export class CatService {
    * @param string lastname
    * @param int id
    */
-  create_user(firstname, lastname, id) {
-    const uri = "http://localhost:9999/api/update_cat/" + id;
+  create_user(firstname, lastname) {
+    const uri = "http://localhost:9999/api/create_user/";
     const obj = {
       firstname: firstname,
       lastname: lastname,
-      id: id
     };
     this.http.put(uri, obj).subscribe(res => console.log("Done"));
   }

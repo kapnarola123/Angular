@@ -6,11 +6,13 @@ import { CatService } from "../cat.service";
 @Component({
   selector: "app-create",
   templateUrl: "./create.component.html",
-  styleUrls: ["./create.component.css"]
+  styleUrls: ["./create.component.css"],
+  providers: [CatService]
 })
 export class CreateComponent implements OnInit {
   lastname: string;
   firstname: string;
+  myform: FormGroup;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -18,30 +20,21 @@ export class CreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // myform = new FormGroup({
-    //   name: new FormGroup({
-    //     firstName: new FormControl("", Validators.required),
-    //     lastName: new FormControl("", Validators.required)
-    //   }),
-    //   email: new FormControl("", [
-    //     Validators.required,
-    //     Validators.pattern("[^ @]*@[^ @]*")
-    //   ]),
-    //   password: new FormControl("", [
-    //     Validators.minLength(8),
-    //     Validators.required
-    //   ]),
-    //   language: new FormControl()
-    // });
+    this.myform = new FormGroup({
+      name: new FormGroup({
+        firstName: new FormControl("", Validators.required),
+        lastName: new FormControl("", Validators.required)
+      }),
+    });
   }
 
   /**
    * update_user()
    * @uses update the user on click of the submit button
    */
-  update_user() {
+  create_user() {
     this.route.params.subscribe(params => {
-      this.service.create_user(this.firstname, this.lastname, params["id"]);
+      this.service.create_user(this.firstname, this.lastname);
       this.router.navigate(["read"]);
     });
   }
