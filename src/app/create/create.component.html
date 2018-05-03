@@ -45,8 +45,20 @@
         Please all insered users
         <a routerLink="/read" class="logout">View users</a></p>
     <form action="/action_page.php">
+        <input id="name" name="name" class="form-control" [(ngModel)]="hero.name" #name="ngModel" required>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+            <div *ngIf="name.errors.required">
+                Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+                Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="name.errors.forbiddenName">
+                Name cannot be Bob.
+            </div>
+        </div>
         <label for="fname">First Name</label>
-        <input type="text" id="fname" name="firstname" placeholder="Your name.." [(ngModel)]="firstname" required> Error {{ myform.controls.firstName.dirty }}
+        <!-- <input type="text" id="fname" name="firstname" placeholder="Your name.." [(ngModel)]="firstname" #name="ngModel" required> -->
         <label for="lname">Last Name</label>
         <input type="text" id="lname" name="lastname" placeholder="Your last name.." [(ngModel)]="lastname">
         <label for="country">Country</label>

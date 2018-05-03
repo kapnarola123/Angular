@@ -10,8 +10,12 @@ import { CatService } from "../cat.service";
   providers: [CatService]
 })
 export class CreateComponent implements OnInit {
+
+    powers = ['Really Smart', 'Super Flexible', 'Weather Changer'];
+
+  hero = {name: '', alterEgo: 'Dr. What', power: this.powers[0]};
   lastname: string;
-  firstname: string;
+  firstname;
   myform: FormGroup;
   constructor(
     private route: ActivatedRoute,
@@ -20,12 +24,15 @@ export class CreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        firstName: new FormControl("", Validators.required),
-        lastName: new FormControl("", Validators.required)
-      }),
-    });
+      this.myform = new FormGroup({
+        'name': new FormControl(this.hero.name, [
+          Validators.required,
+          Validators.minLength(4),
+        ]),
+        'alterEgo': new FormControl(this.hero.alterEgo),
+        'power': new FormControl(this.hero.power, Validators.required),
+        'firstname': new FormControl(this.firstname, [Validators.required])
+      });
   }
 
   /**
